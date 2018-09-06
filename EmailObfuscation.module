@@ -315,7 +315,14 @@ class EmailObfuscation extends WireData implements Module, ConfigurableModule {
 			}
 
 			// create addresses script block
-			$addrScript = "\n<!-- emo -->\n<script>\n var emo_addr = new Array();\n{$this->addrScript}</script>\n";
+			$addrScript = "
+			\n<!-- emo -->
+			\n<script>
+			\nvar emo_addr = new Array();
+			\n{$this->addrScript}
+			\nemo.init(emo_addr);
+			\n</script>
+			\n";
 
 			// append debug info to output
 			if($this->debug) {
